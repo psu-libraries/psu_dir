@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Performs queries against Penn State's directory services to find users and return preferred"\
                        ' names, email address, and other information.'
   spec.homepage      = 'https://github.com/psu-stewardship/psu_dir'
+  spec.licenses      = ['Apache-2.0']
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
