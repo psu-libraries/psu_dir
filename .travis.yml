@@ -1,7 +1,13 @@
-sudo: false
 language: ruby
+cache:
+  bundler: true
 rvm:
   - 2.4.1
-before_install: gem install bundler -v 1.16.1
-before_script:
-  - "cp config/hydra-ldap.yml.sample config/hydra-ldap.yml"
+stages:
+  - rubocop
+  - test
+jobs:
+  include:
+    - script: cp config/travis/hydra-ldap.yml config/hydra-ldap.yml && bundle exec rspec
+    - stage: rubocop
+      script: bundle exec rubocop
