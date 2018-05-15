@@ -1,3 +1,5 @@
---format documentation
 --color
+--tty
+--format progress
+--profile
 --require spec_helper

@@ -1,7 +1,15 @@
-sudo: false
 language: ruby
+cache:
+  bundler: true
+bundler_args: --without development debug
+sudo: false
 rvm:
   - 2.4.1
-before_install: gem install bundler -v 1.16.1
-before_script:
-  - "cp config/hydra-ldap.yml.sample config/hydra-ldap.yml"
+stages:
+  - rubocop
+  - test
+jobs:
+  include:
+    - script: cp config/hydra-ldap.yml.sample config/hydra-ldap.yml && bundle exec rake
+    - stage: rubocop
+      script: pwd
